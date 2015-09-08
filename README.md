@@ -1,5 +1,5 @@
 # General Instructions 
-Here are general instrcutions about how to compile SimVascular flowsolver (svSolver) on linux clusters. 
+Here are general instrcutions about how to compile SimVascular flowsolver (svSolver) on linux clusters. Some examples for some linux clusters we are using now are shown in separate files. They show how to compile and run svSolver on those clusters. 
 
 (1) Download the latest SimVascular code from github.com/SimVascular/SimVascular.
 
@@ -70,7 +70,7 @@ MPIEXEC_PATH  = [mpi exec path]
 MPIEXEC       = mpiexec
 ~~~
 
-Normally intel libs from sv_extern when using gnu compiler are not needed. But in case you need them, set up in this file.
+Normally intel libs from sv_extern are not needed when using gnu compiler. But in case you need them, set up in this file.
 **BuildWithMake/pkg_overrides.mk**
 ~~~
 INTEL_COMPILER_SO_PATH  = [intel libs path]
