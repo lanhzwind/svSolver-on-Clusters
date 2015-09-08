@@ -1,7 +1,5 @@
 # svSolver-on-Computer-Clusters
 
----
-
 ## Compiling
 
 To compile SimVascular flowsolver (svSolver) only on clusters, you need to:
