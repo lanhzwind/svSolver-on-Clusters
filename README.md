@@ -57,7 +57,7 @@ CCDEP           = mpicc -MM
 #Same as the above.
 ~~~
 
-MPI_LIBS is for choosing fortran libraries. For openmpi, different versions may have different settings. You nend to use ##mpicc --showme:link## to check after you load openmpi.
+MPI_LIBS is for choosing fortran libraries. For openmpi, different versions may have different settings. You nend to use **mpicc --showme:link** to check after you load openmpi.
 
 When using mpi wrappers, you don't need to explicity set mpi include dir and compiling/linking flags. But if you can't use module load or mpi wrappers have some issues. You need to specify as below:
 ~~~
@@ -73,7 +73,7 @@ Normally intel libs from sv_extern when using gnu compiler are not needed. But i
 **BuildWithMake/pkg_overrides.mk**
 ~~~
 INTEL_COMPILER_SO_PATH  = [intel libs path]
-CC_LIBS         = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -lintlc
-CXX_LIBS        = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -lintlc -ldl
-F90_LIBS        = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -lifcore -lifport -lgfortran -lm -lintlc
+CC_LIBS   = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -lintlc
+CXX_LIBS  = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -lintlc -ldl
+F90_LIBS  = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -lifcore -lifport -lgfortran -lm -lintlc
 ~~~
