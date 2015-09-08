@@ -1,6 +1,3 @@
-# svSolver-on-Computer-Clusters
-
-## Compiling
 
 To compile SimVascular flowsolver (svSolver) only on linux clusters, you need to:
 - make sure mpi and compiler is available. Normally you can use the command **module load** to load mpi and compiler. They also need to be compatible, which means if you choose gcc (or intel) as the compiler, the mpi should also be compiled by gcc (or intel). 
@@ -59,7 +56,7 @@ CCDEP           = mpicc -MM
 
 MPI_LIBS is for choosing fortran libraries. For openmpi, different versions may have different settings. You need to use **mpicc --showme:link** to check after you load openmpi.
 
-When using mpi wrappers, you don't need to explicity set mpi include dir and compiling/linking flags. But if you can't use module load or mpi wrappers have some issues. You need to specify as below:
+When using mpi wrappers, you don't need to explicitly set mpi include dir and compiling/linking flags. But if you can't use module load or mpi wrappers have some issues, use compiler commands instead of mpi wrappers and specify mpi as below:
 ~~~
 MPI_TOP     =  [mpi path]
 MPI_INCDIR  = -I $(MPI_TOP)/include -L $(MPI_TOP)/lib
