@@ -1,4 +1,6 @@
 
+Download the latest SimVascular code from github.com/SimVascular/SimVascular.
+
 To compile SimVascular flowsolver (svSolver) only on linux clusters, you need to:
 - make sure mpi and compiler is available. Normally you can use the command **module load** to load mpi and compiler. They also need to be compatible, which means if you choose gcc (or intel) as the compiler, the mpi should also be compiled by gcc (or intel). 
 
@@ -74,3 +76,5 @@ CC_LIBS   = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -lintlc
 CXX_LIBS  = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -lintlc -ldl
 F90_LIBS  = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -lifcore -lifport -lgfortran -lm -lintlc
 ~~~
+
+After all settings are completed, go the directory BuildWithMake, **make**!The compiled svSolver will be  BuildWithMake/Bin/flowsolver.exe
