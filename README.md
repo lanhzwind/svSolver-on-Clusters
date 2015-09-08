@@ -56,3 +56,17 @@ CCDEP           = mpicc -MM
 #MPI settings at the end
 #Same as the above.
 ~~~
+
+MPI_LIBS is for choosing fortran libraries. For openmpi, different versions may have different settings. You nend to use ##mpicc --showme:link## to check after you load openmpi.
+
+When using mpi wrappers, you don't need to explicity set mpi include dir and compiling/linking flags. But if you can't use module load or mpi wrappers have some issues. You need to specify as below:
+~~~
+    MPI_TOP     =  /usr/lib/mpich
+    MPI_INCDIR  = -I $(MPI_TOP)/include -L $(MPI_TOP)/lib
+    MPI_LIBS    = -lmpichf90 -lmpich -lopa -lmpl -lrt -lpthread
+    MPI_SO_PATH = $(MPI_TOP)/lib
+    MPIEXEC_PATH  = /usr/bin
+    MPIEXEC       = mpiexec
+~~~
+
+Normally intel libs from sv_extern when using gun compiler are not needed. But in case you need them, set up here.
