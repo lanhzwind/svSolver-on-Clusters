@@ -44,7 +44,7 @@ qsub -I -l size=16,walltime=1:00:00
 
 ~~~
 module swap PrgEnv-cray PrgEnv-intel
-cd /lustre/medusa/[account name]
+cd /lustre/medusa/[user name]
 aprun -n 4 ~/SimVascular/BuildWithMake/Bin/flowsolver.exe
 ~~~
 
@@ -53,13 +53,12 @@ aprun -n 4 ~/SimVascular/BuildWithMake/Bin/flowsolver.exe
 example.job
 ~~~
 #!/bin/bash 
-#PBS -A UT-NTNL0121 
+#PBS -A [allocation name] 
 #PBS -l size=32,walltime=01:30:00  
 
 module swap PrgEnv-cray PrgEnv-intel
 cd $PBS_O_WORKDIR
 aprun -n 32 ~/SimVascular/BuildWithMake/Bin/flowsolver.exe
-
 ~~~
 
 Run the job
