@@ -49,35 +49,13 @@ ibrun -np 2 ~/SimVascular/BuildWithMake/Bin/flowsolver.exe
 example.job
 ~~~
 #!/bin/sh
-#SBATCH -A [allocation name]
-##################
-#set a job name
-#SBATCH -J example
-#################
-#a file for job output, you can check job progress
-#SBATCH -o example.%j.out
-#################
-# a file for errors from the job
-#SBATCH -e example.%j.err
-#################
-#time you think you need; default is one hour
-#in minutes in this case
-#SBATCH -t 00:40:00
-#################
-#quality of service; think of it as job priority
-#SBATCH -p normal
-#################
-#number of total tasks you are requesting
-#SBATCH -n 256
-#################
-#memory per node; default is 4000 MB per CPU
-##SBATCH --mem=4000
-#you could use --mem-per-cpu; they mean what we are calling cores
-#################
-#tasks to run per node; a "task" is usually mapped to a MPI processes.
-# for local parallelism (OpenMP or threads), use "--ntasks-per-node=1 --cpus-per-tasks=16" instead
-#################
-#################
+#SBATCH -A [allocation name]  #account code
+#SBATCH -J example            # Job name
+#SBATCH -o example.%j.out   # stdout; %j expands to jobid
+#SBATCH -e example.%j.err   # stderr; skip to combine stdout and stderr
+#SBATCH -t 00:30:00       # max time
+#SBATCH -p development    # queue
+#SBATCH -n 32             # Total number of MPI tasks (if omitted, n=N)
 
 #SBATCH --mail-user=[email address]
 #SBATCH --mail-type=begin
