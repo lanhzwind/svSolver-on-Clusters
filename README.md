@@ -74,9 +74,9 @@ Normally intel libs from sv_extern are not needed when using gnu compiler. But i
 **BuildWithMake/pkg_overrides.mk**
 ~~~
 INTEL_COMPILER_SO_PATH  = [intel libs path]
-CC_LIBS   = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -lintlc
-CXX_LIBS  = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -lintlc -ldl
-F90_LIBS  = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -lifcore -lifport -lgfortran -lm -lintlc
+CC_LIBS   = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -ldl
+CXX_LIBS  = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -ldl
+F90_LIBS  = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -ldl -lifcore -lifport -lgfortran -lm
 ~~~
 
-(3) After all settings are completed, go the directory BuildWithMake, **make**!The compiled svSolver will be  BuildWithMake/Bin/flowsolver.exe
+(3) After all settings are completed, go the directory BuildWithMak and**make**! The compiled svSolver will be  BuildWithMake/Bin/flowsolver.exe
