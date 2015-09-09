@@ -58,7 +58,7 @@ CCDEP           = mpicc -MM
 #Same as the above.
 ~~~
 
-MPI_LIBS is for choosing fortran libraries. For openmpi, different versions may have different settings. You need to use **mpicc --showme:link** to check after you load openmpi.
+MPI_LIBS is for choosing fortran libraries. For openmpi, different versions may have different settings. You need to use **mpif90 --showme:link** to check after you load openmpi.
 
 When using mpi wrappers, you don't need to explicitly set mpi include dir and compiling/linking flags. But if you can't use module load or mpi wrappers have some issues, use compiler commands instead of mpi wrappers and specify mpi as below:
 ~~~
