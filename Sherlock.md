@@ -83,9 +83,16 @@ example.job
 #SBATCH --ntasks-per-node=16
 #################
 
-#now run normal batch commands
-module load mpich/3.1.4/intel
+#load mpi
+module load openmpi/1.8.7/intel
 
 #run with mpirun
 srun ~/SimVascular/BuildWithMake/Bin/flowsolver.exe
 ~~~
+
+Run the job
+~~~
+sbatch example.job
+~~~
+
+
