@@ -9,6 +9,7 @@ Make sure mpi and compiler is available. Normally you can use the command **modu
 Make corresponding changes in the following files. Please create one if one of them doesn't exist. There are two methods to do it, the first one is easy, and the the second gives more control.
 
 **Method 1**
+
 This method only changes two files and works at most time. In case it doesn't, you need to use Method 2.
 
 **BuildWithMake/cluster_overrides.mk**
