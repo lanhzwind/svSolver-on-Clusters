@@ -8,8 +8,7 @@ Make sure mpi and compiler is available. Normally you can use the command **modu
 ###Step 2
 Make corresponding changes in the following files. Please create one if one of them doesn't exist. There are two methods to do it, the first one is easy, and the the second gives more control.
 
-Method 1
----
+**Method 1**
 **BuildWithMake/cluster_overrides.mk**
 ~~~
 CLUSTER = x64_linux
