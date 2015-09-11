@@ -18,24 +18,11 @@ FORTRAN_COMPILER_VERSION = ifort
 EXCLUDE_ALL_BUT_THREEDSOLVER = 1
 # Don't use VTK
 FLOWSOLVER_VERSION_USE_VTK_ACTIVATE = 0
-# Don't use default settings for mpi. Speficy mpi on compiler.xxx.mk.
-MAKE_WITH_MPICH2 = 0
-~~~
-
-**BuildWithMake/MakeHelpers/compiler.intel.x64_linux.mk**
-~~~
-...
-#mpi wrappers are recommended for compilers.
-CXX             = mpicxx -pthread
-CC              = mpicc -pthread
-F90             = mpif90 -threads -fpp
-CXXDEP          = mpicxx -MM
-CCDEP           = mpicc -MM
-...
-...
-#MPI settings at the end
-#openmpi/1.8.7
-MPI_LIBS     = -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi
+# Use defautl settings for mpi
+MAKE_WITH_MPI = 1
+# Choose openmpi
+MAKE_WITH_OPENMPI = 1
+MAKE_WITH_MPICH = 0
 ~~~
 
 #Testing
