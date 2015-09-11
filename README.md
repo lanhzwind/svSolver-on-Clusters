@@ -34,7 +34,7 @@ MAKE_WITH_OPENMPI = 1
 MAKE_WITH_MPICH = 0
 ~~~
 
-To make sure svSolver use stack, override some default setting for fortran compilation.
+To make sure svSolver use stack, override some default settings for fortran compilation.
 **BuildWithMake/pkg_overrides.mk**
 ~~~
 #for ifort
@@ -45,7 +45,7 @@ GLOBAL_FFLAGS   = $(BUILDFLAGS) $(DEBUG_FFLAGS) $(OPT_FFLAGS) -W0 -132
 
 **Method 2**
 
-This method changes several files and gives more control about the compiling process. 
+This method gives more control about the compiling process. 
 
 **BuildWithMake/cluster_overrides.mk**
 ~~~
@@ -86,7 +86,7 @@ GLOBAL_FFLAGS   = $(BUILDFLAGS) $(DEBUG_FFLAGS) $(OPT_FFLAGS) -W0 -132
 #F90             = mpif90 -cpp
 #GLOBAL_FFLAGS   = $(BUILDFLAGS) $(DEBUG_FFLAGS) $(OPT_FFLAGS) -ffixed-line-length-132
 
-#MPI settings at the end
+#MPI settings
 #openmpi/1.8.7
 MPI_LIBS     = -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi
 #mpich
