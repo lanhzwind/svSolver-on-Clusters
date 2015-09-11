@@ -1,5 +1,5 @@
 # General Instructions 
-Here are general instrcutions about how to compile SimVascular flowsolver (svSolver) on linux clusters. Some examples for some linux clusters we are using now are shown in separate files. They show how to compile and run svSolver on those clusters. Download the latest SimVascular code from [github.com/SimVascular/SimVascular](http://github.com/SimVascular/SimVascular).
+Here are general instrcutions and recommendations about compiling and running SimVascular flowsolver (svSolver) on linux clusters. Some examples for some linux clusters we are using now are shown in separate files. They show how to compile and run svSolver on those clusters. Download the latest SimVascular code from [github.com/SimVascular/SimVascular](http://github.com/SimVascular/SimVascular).
 
 ##Compiling
 ###Step 1
@@ -10,7 +10,7 @@ Make corresponding changes in the following files. Please create one if one of t
 
 **Method 1**
 
-This method only changes two files and works at most time. In case it doesn't because mpi wrappers have issues or the clusters don't have normal wrappers, you need to use Method 2.
+It works at most time. In case it doesn't because mpi wrappers have issues or the clusters don't have normal wrappers, you need to use Method 2.
 
 **BuildWithMake/cluster_overrides.mk**
 ~~~
@@ -32,6 +32,15 @@ MAKE_WITH_MPI = 1
 # Choose openmpi
 MAKE_WITH_OPENMPI = 1
 MAKE_WITH_MPICH = 0
+~~~
+
+To make sure svSolver use stack, override some default setting for fortran compilation.
+**BuildWithMake/pkg_overrides.mk**
+~~~
+#for ifort
+GLOBAL_FFLAGS   = $(BUILDFLAGS) $(DEBUG_FFLAGS) $(OPT_FFLAGS) -W0 -132
+#for gfortran
+#GLOBAL_FFLAGS   = $(BUILDFLAGS) $(DEBUG_FFLAGS) $(OPT_FFLAGS) -ffixed-line-length-132
 ~~~
 
 **Method 2**
@@ -57,12 +66,10 @@ FLOWSOLVER_VERSION_USE_VTK_ACTIVATE = 0
 MAKE_WITH_MPI = 0
 # Give a name for the mpi you use
 MPI_NAME=openmpi
-
 ~~~
 
 **BuildWithMake/pkg_overrides.mk**
 ~~~
-...
 #mpi wrappers are recommended for compilers.
 #if using icpc and ifort
 CXX             = mpicxx -pthread
@@ -76,8 +83,7 @@ F90             = mpif90 -threads -fpp
 #CXXDEP          = mpicxx -MM
 #CCDEP           = mpicc -MM
 #F90             = mpif90 -cpp
-...
-...
+
 #MPI settings at the end
 #openmpi/1.8.7
 MPI_LIBS     = -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi
@@ -108,3 +114,14 @@ F90_LIBS  = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -ldl -lifcore -lifpor
 ###Step 3
 
 After all the settings are completed, go to the directory BuildWithMake and **make**! The compiled svSolver will be located BuildWithMake/Bin/.
+
+
+##Testing
+To test if the svSovler works properly, run a simple case by an interactive job.
+
+##Running
+Many factors can effect svSolver performance, including compilers, compiling flag, mpis. It's better to run some preliminary simulations to check which combination has the best performance. Then you can start to run simulations for your project and can save you a lot of time! Best on my testings, the recommendations are
+1. Use intel instead of gcc (reducing cpu time up to 20%)
+2. Choose a well tuned/optimized mpi(reducing time up to 70,especially when using a large number of nodes)
+3. Adjust your compiling options, such as forcing to use stack (sometimes reducsing time up to 12%)
+Combining all these, you could save up to 80% time!
