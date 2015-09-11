@@ -25,6 +25,11 @@ MAKE_WITH_OPENMPI = 1
 MAKE_WITH_MPICH = 0
 ~~~
 
+**BuildWithMake/pkg_overrides.mk**
+~~~
+GLOBAL_FFLAGS   = $(BUILDFLAGS) $(DEBUG_FFLAGS) $(OPT_FFLAGS) -W0 -132
+~~~
+
 #Testing
 Make sure openmpi/1.8.7/intel is loaded
 
