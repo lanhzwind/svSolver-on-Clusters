@@ -27,7 +27,7 @@ FORTRAN_COMPILER_VERSION = ifort
 EXCLUDE_ALL_BUT_THREEDSOLVER = 1
 # Don't use VTK
 FLOWSOLVER_VERSION_USE_VTK_ACTIVATE = 0
-# Use defautl setttings for mpi
+# Use defautl settings for mpi
 MAKE_WITH_MPI = 1
 # Choose openmpi
 MAKE_WITH_OPENMPI = 1
@@ -53,7 +53,7 @@ FORTRAN_COMPILER_VERSION = ifort
 EXCLUDE_ALL_BUT_THREEDSOLVER = 1
 # Don't use VTK
 FLOWSOLVER_VERSION_USE_VTK_ACTIVATE = 0
-# Don't use defautl setttings for mpi
+# Don't use defautl settings for mpi
 MAKE_WITH_MPI = 0
 # Give a name for the mpi you use
 MPI_NAME=openmpi
@@ -66,7 +66,6 @@ MPI_NAME=openmpi
 #mpi wrappers are recommended for compilers.
 CXX             = mpicxx -pthread
 CC              = mpicc -pthread
-F90             = mpif90 -threads -fpp
 CXXDEP          = mpicxx -MM
 CCDEP           = mpicc -MM
 ...
@@ -88,22 +87,30 @@ MPI_LIBS     = -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi
 ~~~
 
 
-**BuildWithMake/MakeHelpers/compiler.gnu.x64_linux.mk** if using gnu compiler
+**BuildWithMake/MakeHelpers/compiler.gcc.x64_linux.mk** if using gnu compiler
 ~~~
 ...
 #mpi wrappers are recommended for compilers.
 CXX             = mpicxx -pthread -w
 CC              = mpicc -pthread -w
-F90             = mpif90 -cpp
 CXXDEP          = mpicxx -MM
 CCDEP           = mpicc -MM
 ...
 ...
-#MPI settings at the end
-#Same as the above.
 ~~~
 
-MPI_LIBS is for choosing fortran libraries. For openmpi, different versions may have different settings. You need to use **mpif90 --showme:link** to check after you load openmpi.
+**BuildWithMake/MakeHelpers/compiler.gfortran.x64_linux.mk** if using gnu compiler
+~~~
+...
+#mpi wrappers are recommended for compilers.
+F90             = mpif90 -cpp
+...
+...
+#MPI settings at the end
+#Same as the compiler.ifort.x64_linux.mk.
+~~~
+
+MPI_LIBS is for choosing fortran libraries. Different mpis or even different verions may have different settings. For openmpi, you need to use **mpif90 --showme:link** to check after you load openmpi. For mpich, you can use **mpif90 -link_info**.
 
 When using mpi wrappers, you don't need to explicitly set mpi include dir and compiling/linking flags. But if you can't use module load or mpi wrappers have some issues, use compiler commands instead of mpi wrappers and specify mpi as below:
 ~~~
