@@ -128,5 +128,5 @@ Many factors can effect svSolver performance, including compilers, compiling fla
 
 (2) Choose a well tuned/optimized mpi(reducing time up to 70%,especially when using a large number of nodes)
 
-(3) Adjust your compiling options, such as forcing to use stack (sometimes reducsing time up to 12%)
+(3) Adjust your compiling options, such as forcing to use stack (sometimes reducing time up to 12%)
 Combining all these, you could save up to 80% time!
