@@ -72,7 +72,7 @@ CCDEP           = mpicc -MM
 ...
 ~~~
 
-**BuildWithMake/MakeHelpers/compiler.ifort.x64_linux.mk** if using icpc
+**BuildWithMake/MakeHelpers/compiler.ifort.x64_linux.mk** if using ifort
 ~~~
 ...
 #mpi wrappers are recommended for compilers.
@@ -87,7 +87,7 @@ MPI_LIBS     = -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi
 ~~~
 
 
-**BuildWithMake/MakeHelpers/compiler.gcc.x64_linux.mk** if using gnu compiler
+**BuildWithMake/MakeHelpers/compiler.gcc.x64_linux.mk** if using gcc
 ~~~
 ...
 #mpi wrappers are recommended for compilers.
@@ -99,7 +99,7 @@ CCDEP           = mpicc -MM
 ...
 ~~~
 
-**BuildWithMake/MakeHelpers/compiler.gfortran.x64_linux.mk** if using gnu compiler
+**BuildWithMake/MakeHelpers/compiler.gfortran.x64_linux.mk** if using gfortran
 ~~~
 ...
 #mpi wrappers are recommended for compilers.
@@ -131,4 +131,6 @@ CXX_LIBS  = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -ldl
 F90_LIBS  = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -ldl -lifcore -lifport -lgfortran -lm
 ~~~
 
-###Step 3 After all the settings are completed, go to the directory BuildWithMake and **make**! The compiled svSolver will be located BuildWithMake/Bin/.
+###Step 3
+
+After all the settings are completed, go to the directory BuildWithMake and **make**! The compiled svSolver will be located BuildWithMake/Bin/.
