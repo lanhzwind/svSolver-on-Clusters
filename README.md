@@ -60,7 +60,7 @@ MPI_NAME=openmpi
 
 ~~~
 
-**BuildWithMake/pkg_overrides.mk** if using icpc
+**BuildWithMake/pkg_overrides.mk**
 ~~~
 ...
 #mpi wrappers are recommended for compilers.
