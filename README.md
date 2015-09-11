@@ -77,12 +77,14 @@ CC              = mpicc -pthread
 CXXDEP          = mpicxx -MM
 CCDEP           = mpicc -MM
 F90             = mpif90 -threads -fpp
+GLOBAL_FFLAGS   = $(BUILDFLAGS) $(DEBUG_FFLAGS) $(OPT_FFLAGS) -W0 -132
 ##if using gcc and gfortran
 #CXX             = mpicxx -pthread -w
 #CC              = mpicc -pthread -w
 #CXXDEP          = mpicxx -MM
 #CCDEP           = mpicc -MM
 #F90             = mpif90 -cpp
+#GLOBAL_FFLAGS   = $(BUILDFLAGS) $(DEBUG_FFLAGS) $(OPT_FFLAGS) -ffixed-line-length-132
 
 #MPI settings at the end
 #openmpi/1.8.7
@@ -121,6 +123,7 @@ To test if the svSovler works properly, run a simple case by an interactive job.
 
 ##Running
 Many factors can effect svSolver performance, including compilers, compiling flag, mpis. It's better to run some preliminary simulations to check which combination has the best performance. Then you can start to run simulations for your project and can save you a lot of time! Best on my testings, the recommendations are
+
 (1) Use intel instead of gcc (reducing cpu time up to 20%)
 
 (2) Choose a well tuned/optimized mpi(reducing time up to 70,especially when using a large number of nodes)
