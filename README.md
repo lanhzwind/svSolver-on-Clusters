@@ -21,7 +21,7 @@ CXX_COMPILER_VERSION = icpc
 FORTRAN_COMPILER_VERSION = ifort
 ~~~
 
-**BuildWithMake/site_overrides.mk**
+**BuildWithMake/site_overrides.mk** (or global_overrides.mk, either is ok)
 ~~~
 # Build only the 3D Solver
 EXCLUDE_ALL_BUT_THREEDSOLVER = 1
@@ -60,23 +60,22 @@ MPI_NAME=openmpi
 
 ~~~
 
-**BuildWithMake/MakeHelpers/compiler.icpc.x64_linux.mk** if using icpc
+**BuildWithMake/pkg_overrides.mk** if using icpc
 ~~~
 ...
 #mpi wrappers are recommended for compilers.
+#if using icpc and ifort
 CXX             = mpicxx -pthread
 CC              = mpicc -pthread
 CXXDEP          = mpicxx -MM
 CCDEP           = mpicc -MM
-...
-...
-~~~
-
-**BuildWithMake/MakeHelpers/compiler.ifort.x64_linux.mk** if using ifort
-~~~
-...
-#mpi wrappers are recommended for compilers.
 F90             = mpif90 -threads -fpp
+##if using gcc and gfortran
+#CXX             = mpicxx -pthread -w
+#CC              = mpicc -pthread -w
+#CXXDEP          = mpicxx -MM
+#CCDEP           = mpicc -MM
+#F90             = mpif90 -cpp
 ...
 ...
 #MPI settings at the end
@@ -84,30 +83,6 @@ F90             = mpif90 -threads -fpp
 MPI_LIBS     = -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi
 #mpich
 #MPI_LIBS    = -lmpichf90 -lmpich -lopa -lmpl -lrt -lpthread
-~~~
-
-
-**BuildWithMake/MakeHelpers/compiler.gcc.x64_linux.mk** if using gcc
-~~~
-...
-#mpi wrappers are recommended for compilers.
-CXX             = mpicxx -pthread -w
-CC              = mpicc -pthread -w
-CXXDEP          = mpicxx -MM
-CCDEP           = mpicc -MM
-...
-...
-~~~
-
-**BuildWithMake/MakeHelpers/compiler.gfortran.x64_linux.mk** if using gfortran
-~~~
-...
-#mpi wrappers are recommended for compilers.
-F90             = mpif90 -cpp
-...
-...
-#MPI settings at the end
-#Same as the compiler.ifort.x64_linux.mk.
 ~~~
 
 MPI_LIBS is for choosing fortran libraries. Different mpis or even different verions may have different settings. For openmpi, you need to use **mpif90 --showme:link** to check after you load openmpi. For mpich, you can use **mpif90 -link_info**.
@@ -122,8 +97,7 @@ MPIEXEC_PATH  = [mpi exec path]
 MPIEXEC       = mpiexec
 ~~~
 
-Normally intel libs from sv_extern are not needed when using gnu compiler. But in case you need them, set up in this file.
-**BuildWithMake/pkg_overrides.mk**
+Normally intel libs from sv_extern are not needed when using gnu compiler. But in case you need them, set up in at the end of pkg_overrides.mk.
 ~~~
 INTEL_COMPILER_SO_PATH  = [intel libs path]
 CC_LIBS   = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -ldl
