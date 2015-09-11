@@ -1,5 +1,5 @@
 # General Instructions 
-Here are general instrcutions about how to compile SimVascular flowsolver (svSolver) on linux clusters. Some examples for some linux clusters we are using now are shown in separate files. They show how to compile and run svSolver on those clusters. Download the latest SimVascular code from [github.com/SimVascular/SimVascular](github.com/SimVascular/SimVascular).
+Here are general instrcutions about how to compile SimVascular flowsolver (svSolver) on linux clusters. Some examples for some linux clusters we are using now are shown in separate files. They show how to compile and run svSolver on those clusters. Download the latest SimVascular code from [github.com/SimVascular/SimVascular](http://github.com/SimVascular/SimVascular).
 
 ##Compiling
 ###Step 1
