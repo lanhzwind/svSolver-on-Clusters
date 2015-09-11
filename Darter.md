@@ -24,7 +24,7 @@ MAKE_WITH_MPI = 0
 MPI_NAME=mpich
 ~~~
 
-**BuildWithMake/MakeHelpers/compiler.icpc.x64_linux.mk** if using icpc
+**BuildWithMake/pkg_overrides.mk**
 ~~~
 ...
 #mpi wrappers are recommended for compilers.
@@ -32,20 +32,9 @@ CXX             = CC -pthread
 CC              = cc -pthread
 CXXDEP          = CC -MM
 CCDEP           = cc -MM
-...
-...
-~~~
-
-**BuildWithMake/MakeHelpers/compiler.ifort.x64_linux.mk** if using ifort
-~~~
-...
-#mpi wrappers are recommended for compilers.
 F90             = ftn -threads -fpp
 ...
 ...
-#MPI settings at the end
-#mpich
-MPI_LIBS    = -lmpichf90 -lmpich -lmpl -lrt -lpthread
 ~~~
 
 #Testing
