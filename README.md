@@ -122,8 +122,6 @@ To test if the svSovler works properly, run a simple case by an interactive job.
 ##Running
 Many factors can effect svSolver performance, including compilers, compiling flag, mpis. It's better to run some preliminary simulations to check which combination has the best performance. Then you can start to run simulations for your project and can save you a lot of time! Best on my testings, the recommendations are
 1. Use intel instead of gcc (reducing cpu time up to 20%)
-
 2. Choose a well tuned/optimized mpi(reducing time up to 70,especially when using a large number of nodes)
-
 3. Adjust your compiling options, such as forcing to use stack (sometimes reducsing time up to 12%)
 Combining all these, you could save up to 80% time!
