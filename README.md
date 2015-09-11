@@ -131,4 +131,4 @@ CXX_LIBS  = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -ldl
 F90_LIBS  = -L$(INTEL_COMPILER_SO_PATH) -lirc -limf -lsvml -ldl -lifcore -lifport -lgfortran -lm
 ~~~
 
-(3) After all the settings are completed, go the directory BuildWithMake and**make**! The compiled svSolver will be  BuildWithMake/Bin/flowsolver.exe.
+###Step 3 After all the settings are completed, go to the directory BuildWithMake and **make**! The compiled svSolver will be located BuildWithMake/Bin/.
