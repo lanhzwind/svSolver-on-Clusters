@@ -10,7 +10,7 @@ Make corresponding changes in the following files. Please create one if one of t
 
 **Method 1**
 
-This method only changes two files and works at most time. In case it doesn't, you need to use Method 2.
+This method only changes two files and works at most time. In case it doesn't because mpi wrappers have issues or the clusters don't have normal wrappers, you need to use Method 2.
 
 **BuildWithMake/cluster_overrides.mk**
 ~~~
@@ -32,8 +32,32 @@ MAKE_WITH_MPI = 1
 # Choose openmpi
 MAKE_WITH_OPENMPI = 1
 MAKE_WITH_MPICH = 0
+~~~
 
+**Method 2**
 
+This method changes several files and gives more control about the compiling process. 
+
+**BuildWithMake/cluster_overrides.mk**
+~~~
+CLUSTER = x64_linux
+# CXX_COMPILER_VERSION = { icpc, gcc }
+CXX_COMPILER_VERSION = icpc
+# FORTRAN_COMPILER_VERSION = { ifort, gfortran }
+FORTRAN_COMPILER_VERSION = ifort
+~~~
+
+**BuildWithMake/site_overrides.mk**
+~~~
+# Build only the 3D Solver
+EXCLUDE_ALL_BUT_THREEDSOLVER = 1
+# Don't use VTK
+FLOWSOLVER_VERSION_USE_VTK_ACTIVATE = 0
+# Use defautl setttings for mpi
+MAKE_WITH_MPI = 1
+# Choose openmpi
+MAKE_WITH_OPENMPI = 1
+MAKE_WITH_MPICH = 0
 ~~~
 
 **BuildWithMake/MakeHelpers/compiler.intel.x64_linux.mk** if using intel compiler
