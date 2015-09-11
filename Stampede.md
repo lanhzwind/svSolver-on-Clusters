@@ -5,7 +5,9 @@ intel/13.0.2.146 and mvapich2/1.9a2 are loaded by default.
 **BuildWithMake/cluster_overrides.mk**
 ~~~
 CLUSTER = x64_linux
-COMPILER_VERSION = intel
+
+CXX_COMPILER_VERSION = icpc
+FORTRAN_COMPILER_VERSION = ifort
 ~~~
 
 **BuildWithMake/site_overrides.mk**
@@ -14,24 +16,11 @@ COMPILER_VERSION = intel
 EXCLUDE_ALL_BUT_THREEDSOLVER = 1
 # Don't use VTK
 FLOWSOLVER_VERSION_USE_VTK_ACTIVATE = 0
-# Don't use default settings for mpi. Speficy mpi on compiler.xxx.mk.
-MAKE_WITH_MPICH2 = 0
-~~~
-
-**BuildWithMake/MakeHelpers/compiler.intel.x64_linux.mk**
-~~~
-...
-#mpi wrappers are recommended for compilers.
-CXX             = mpicxx -pthread
-CC              = mpicc -pthread
-F90             = mpif90 -threads -fpp
-CXXDEP          = mpicxx -MM
-CCDEP           = mpicc -MM
-...
-...
-#MPI settings at the end
-#mpich
-MPI_LIBS    = -lmpichf90 -lmpich -lopa -lmpl -lrt -lpthread
+# Use defautl settings for mpi
+MAKE_WITH_MPI = 1
+# Choose openmpi
+MAKE_WITH_OPENMPI = 0
+MAKE_WITH_MPICH = 1
 ~~~
 
 #Testing
