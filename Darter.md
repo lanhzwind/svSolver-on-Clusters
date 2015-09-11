@@ -26,15 +26,13 @@ MPI_NAME=mpich
 
 **BuildWithMake/pkg_overrides.mk**
 ~~~
-...
-#mpi wrappers are recommended for compilers.
 CXX             = CC -pthread
 CC              = cc -pthread
 CXXDEP          = CC -MM
 CCDEP           = cc -MM
 F90             = ftn -threads -fpp
-...
-...
+
+GLOBAL_FFLAGS   = $(BUILDFLAGS) $(DEBUG_FFLAGS) $(OPT_FFLAGS) -W0 -132
 ~~~
 
 #Testing
