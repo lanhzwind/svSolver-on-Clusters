@@ -23,6 +23,11 @@ MAKE_WITH_OPENMPI = 0
 MAKE_WITH_MPICH = 1
 ~~~
 
+**BuildWithMake/pkg_overrides.mk**
+~~~
+GLOBAL_FFLAGS   = $(BUILDFLAGS) $(DEBUG_FFLAGS) $(OPT_FFLAGS) -W0 -132
+~~~
+
 #Testing
 
 ~~~
