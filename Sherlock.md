@@ -7,7 +7,9 @@ module load openmpi/1.8.7/intel
 **BuildWithMake/cluster_overrides.mk**
 ~~~
 CLUSTER = x64_linux
-COMPILER_VERSION = intel
+
+CXX_COMPILER_VERSION = icpc
+FORTRAN_COMPILER_VERSION = ifort
 ~~~
 
 **BuildWithMake/site_overrides.mk**
