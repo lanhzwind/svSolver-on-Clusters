@@ -71,7 +71,7 @@ F90_LIBS        =  -lirc -limf -lsvml -lifcore -lifport -lgfortran -lm
 ~~~
 
 #Testing
-Make sure openmpi/1.8.7/gcc and intel/13sp1up1 is loaded
+Make sure openmpi/1.8.7/intel (for Method 1) or openmpi/1.8.7/gcc and intel/13sp1up1 for (Method 2) is loaded
 
 ~~~
 sdev
@@ -117,8 +117,12 @@ example.job
 #SBATCH --ntasks-per-node=16
 #################
 
-#load mpi
+#Method 1
 module load openmpi/1.8.7/intel
+
+#Method 2
+#module load openmpi/1.8.7/gcc
+#module load intel/13sp1up1
 
 #run with mpirun
 srun ~/SimVascular/BuildWithMake/Bin/flowsolver.exe
