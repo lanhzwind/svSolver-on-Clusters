@@ -23,6 +23,8 @@ FORTRAN_COMPILER_VERSION = ifort
 
 **BuildWithMake/site_overrides.mk** (or global_overrides.mk, either is ok)
 ~~~
+#Don't use shared globals
+MAKE_WITH_GLOBALS_SHARED = 0
 # Build only the 3D Solver
 EXCLUDE_ALL_BUT_THREEDSOLVER = 1
 # Don't use VTK
