@@ -1,5 +1,7 @@
 #Compiling
 
+##Method 1: Using Intel Compilers
+
 ~~~
 module load openmpi/1.8.7/intel
 ~~~
@@ -32,8 +34,44 @@ MAKE_WITH_MPICH = 0
 GLOBAL_FFLAGS   = $(BUILDFLAGS) $(DEBUG_FFLAGS) $(OPT_FFLAGS) -W0 -132
 ~~~
 
+##Method 2: Using GCC Compilers with  intel linking
+
+~~~
+module load openmpi/1.8.7/gcc
+module load intel/13sp1up1
+~~~
+
+**BuildWithMake/cluster_overrides.mk**
+~~~
+CLUSTER = x64_linux
+
+CXX_COMPILER_VERSION = gcc
+FORTRAN_COMPILER_VERSION = gfortran
+~~~
+
+**BuildWithMake/site_overrides.mk**
+~~~
+#Don't use shared globals
+MAKE_WITH_GLOBALS_SHARED = 0
+# Build only the 3D Solver
+EXCLUDE_ALL_BUT_THREEDSOLVER = 1
+# Don't use VTK
+FLOWSOLVER_VERSION_USE_VTK_ACTIVATE = 0
+# Use defautl settings for mpi
+MAKE_WITH_MPI = 1
+# Choose openmpi
+MAKE_WITH_OPENMPI = 1
+MAKE_WITH_MPICH = 0
+~~~
+
+**BuildWithMake/pkg_overrides.mk**
+~~~
+GLOBAL_FFLAGS   = $(BUILDFLAGS) $(DEBUG_FFLAGS) $(OPT_FFLAGS) -ffixed-line-length-132
+F90_LIBS        =  -lirc -limf -lsvml -lifcore -lifport -lgfortran -lm
+~~~
+
 #Testing
-Make sure openmpi/1.8.7/intel is loaded
+Make sure openmpi/1.8.7/gcc and intel/13sp1up1 is loaded
 
 ~~~
 sdev
