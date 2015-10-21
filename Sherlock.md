@@ -130,7 +130,12 @@ srun ~/SimVascular/BuildWithMake/Bin/flowsolver.exe
 
 Run the job
 ~~~
+#Use base nodes
 sbatch example.job
+#Use own partition
+sbatch -p <partition_name> example.job
+#use other owner's partition
+sbatch -p owners example.job
 ~~~
 
 
