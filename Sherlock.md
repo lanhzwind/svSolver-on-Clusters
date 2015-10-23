@@ -1,5 +1,5 @@
 #Compiling
-*Considering performance and also accuracy, Method 2 is recommended.*
+**Considering performance and also accuracy, Method 2 is recommended.**
 
 ##Method 1: Using Intel Compilers
 
