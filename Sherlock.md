@@ -116,6 +116,9 @@ example.job
 # for local parallelism (OpenMP or threads), use "--ntasks-per-node=1 --cpus-per-tasks=16" instead
 #SBATCH --ntasks-per-node=16
 #################
+#partition to use
+#SBATCH --partition=<partition_name>
+#################
 
 #Method 1
 module load openmpi/1.8.7/intel
@@ -130,11 +133,10 @@ srun ~/SimVascular/BuildWithMake/Bin/flowsolver.exe
 
 Run the job
 ~~~
-#Use base nodes
 sbatch example.job
-#Use own partition
+#Use own partition, if the partition is not specified in example.job
 sbatch -p <partition_name> example.job
-#use other owner's partition
+#use other owner's partition, if the partition is not specified in example.job
 sbatch -p owners example.job
 ~~~
 
