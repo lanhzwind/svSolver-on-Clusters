@@ -18,16 +18,16 @@ FORTRAN_COMPILER_VERSION = ifort
 **BuildWithMake/site_overrides.mk**
 ~~~
 #Don't use shared globals
-MAKE_WITH_GLOBALS_SHARED = 0
+SV_USE_GLOBALS_SHARED = 0
 # Build only the 3D Solver
 EXCLUDE_ALL_BUT_THREEDSOLVER = 1
 # Don't use VTK
 FLOWSOLVER_VERSION_USE_VTK_ACTIVATE = 0
 # Use defautl settings for mpi
-MAKE_WITH_MPI = 1
+SV_USE_MPI = 1
 # Choose openmpi
-MAKE_WITH_OPENMPI = 1
-MAKE_WITH_MPICH = 0
+SV_USE_OPENMPI = 1
+SV_USE_MPICH = 0
 ~~~
 
 **BuildWithMake/pkg_overrides.mk**
@@ -53,16 +53,16 @@ FORTRAN_COMPILER_VERSION = gfortran
 **BuildWithMake/site_overrides.mk**
 ~~~
 #Don't use shared globals
-MAKE_WITH_GLOBALS_SHARED = 0
+SV_USE_GLOBALS_SHARED = 0
 # Build only the 3D Solver
 EXCLUDE_ALL_BUT_THREEDSOLVER = 1
 # Don't use VTK
-FLOWSOLVER_VERSION_USE_VTK_ACTIVATE = 0
+SV_THREEDSOLVER_USE_VTK = 0
 # Use defautl settings for mpi
-MAKE_WITH_MPI = 1
+SV_USE_MPI = 1
 # Choose openmpi
-MAKE_WITH_OPENMPI = 1
-MAKE_WITH_MPICH = 0
+SV_USE_OPENMPI = 1
+SV_USE_MPICH = 0
 ~~~
 
 **BuildWithMake/pkg_overrides.mk**
