@@ -24,16 +24,16 @@ FORTRAN_COMPILER_VERSION = ifort
 **BuildWithMake/site_overrides.mk** (or global_overrides.mk, either is ok)
 ~~~
 #Don't use shared globals
-MAKE_WITH_GLOBALS_SHARED = 0
+SV_USE_GLOBALS_SHARED = 0
 # Build only the 3D Solver
 EXCLUDE_ALL_BUT_THREEDSOLVER = 1
 # Don't use VTK
-FLOWSOLVER_VERSION_USE_VTK_ACTIVATE = 0
+SV_THREEDSOLVER_USE_VTK = 0
 # Use defautl settings for mpi
-MAKE_WITH_MPI = 1
+SV_USE_MPI = 1
 # Choose openmpi
-MAKE_WITH_OPENMPI = 1
-MAKE_WITH_MPICH = 0
+SV_USE_OPENMPI = 1
+SV_USE_MPICH = 0
 ~~~
 
 To make sure svSolver use stack, override some default settings for fortran compilation.
@@ -63,9 +63,9 @@ FORTRAN_COMPILER_VERSION = ifort
 # Build only the 3D Solver
 EXCLUDE_ALL_BUT_THREEDSOLVER = 1
 # Don't use VTK
-FLOWSOLVER_VERSION_USE_VTK_ACTIVATE = 0
+SV_THREEDSOLVER_USE_VTK = 0
 # Don't use defautl settings for mpi
-MAKE_WITH_MPI = 0
+SV_USE_MPI = 0
 # Give a name for the mpi you use
 MPI_NAME=openmpi
 ~~~
