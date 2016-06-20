@@ -15,13 +15,13 @@ FORTRAN_COMPILER_VERSION = ifort
 **BuildWithMake/site_overrides.mk**
 ~~~
 #Don't use shared globals
-MAKE_WITH_GLOBALS_SHARED = 0
+SV_USE_GLOBALS_SHARED = 0
 # Build only the 3D Solver
 EXCLUDE_ALL_BUT_THREEDSOLVER = 1
 # Don't use VTK
-FLOWSOLVER_VERSION_USE_VTK_ACTIVATE = 0
+SV_THREEDSOLVER_USE_VTK = 0
 # Don't use defautl settings for mpi
-MAKE_WITH_MPI = 0
+SV_USE_MPI = 0
 # Give a name for the mpi you use
 MPI_NAME=mpich
 ~~~
